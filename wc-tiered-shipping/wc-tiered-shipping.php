@@ -1,12 +1,12 @@
 <?php
 /**
- * @package TieredFlatRate
+ * @package WCTieredShipping
  */
 /*
-Plugin Name: WooCommerce Tiered Flat Rate Shipping
-Plugin URI: http://www.thatdevgirl.com
-Description: Add a tiered flat rate shipping option for WooCommerce
-Version: 1.0
+Plugin Name: WC Tiered Shipping
+Plugin URI: http://www.thatdevgirl.com/wc-tiered-shipping
+Description: Add a tiered flat rate shipping option for the WooCommerce plugin.
+Version: 2.0
 Author: Joni Halabi
 Author URI: http://www.jhalabi.com
 License: The MIT License
@@ -37,10 +37,10 @@ SOFTWARE.
 */
 
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-	function tiered_flat_rate_init() {
+	function tiered_shipping_init() {
 		
 		if ( ! class_exists( 'WC_Tiered_Flat_Rate' ) ) {
-			class WC_Tiered_Flat_Rate extends WC_Shipping_Method {
+			class WC_Tiered_Shipping extends WC_Shipping_Method {
 				/**
 				 * Constructor for the shipping class
 				 *
@@ -48,9 +48,9 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				 * @return void
 				 */
 				public function __construct() {
-					$this->id                 = 'tiered_flat_rate';
-					$this->method_title       = __( 'Tiered Flat Rate' );   // Admin settings title
-					$this->title              = __( 'Tiered Flat Rate' );   // Shipping method list title
+					$this->id                 = 'tiered_shipping';
+					$this->method_title       = __( 'Tiered Shipping' );   // Admin settings title
+					$this->title              = __( 'Tiered Shipping' );   // Shipping method list title
 
 					$this->init();
 				}
@@ -76,26 +76,33 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				 function init_form_fields() {
 				    $this->form_fields = array(
 						'enabled' => array(
-							'title' => __( 'Enabled/Disabled', 'tiered_flat_rate' ),
-							'type' => 'checkbox'
+							'title' => __( 'Enabled/Disabled', 'tiered_shipping' ),
+							'type' => 'checkbox',
+							'label' => 'Enable this shipping method'
 						),
 						'title' => array(
-							'title' => __( 'Title', 'tiered_flat_rate' ),
+							'title' => __( 'Title', 'tiered_shipping' ),
 							'type' => 'text',
-							'description' => __( 'This controls the title which the user sees during checkout.', 'tiered_flat_rate' ),
-							'default' => __( 'Tiered Flat Rate', 'tiered_flat_rate' )
+							'description' => __( 'Shipping method label that is visible to the user.', 'tiered_shipping' ),
+							'default' => __( 'Tiered Flat Rate', 'tiered_shipping' )
 						),
 						'quantity' => array(
-							'title' => __( 'Number of items', 'tiered_flat_rate' ),
+							'title' => __( 'Number of items to activate tiered fee', 'tiered_shipping' ),
 							'type' => 'text',
-							'description' => __( 'Number of items in the cart to activate the higher shipping rate', 'tiered_flat_rate' )
+							'description' => __( 'Number of items in the cart to activate the additioal shipping fee for the next tier.', 'tiered_shipping' )
+						),
+						'progressive' => array(
+							'title' => __('Progressive fee?', 'tiered_shipping'),
+							'type' => 'checkbox',
+							'label' => 'Make the tiered shipping fee progressive',
+							'description' => __( 'If this option is checked the tiered shipping fee will be incremented progressively in multiples of the quantity; otherwise, the tiered shipping fee will be a flat fee if the cart is above the specified quantity.', 'tiered_shipping' )
 						),
 						'basefee' => array(
-							'title' => __( 'Base shipping fee', 'tiered_flat_rate' ),
+							'title' => __( 'Base shipping fee ($)', 'tiered_shipping' ),
 							'type' => 'text'
 						),
 						'tierfee' => array(
-							'title' => __( 'Higher shipping fee', 'tiered_flat_rate' ),
+							'title' => __( 'Additional shipping fee for tiers ($)', 'tiered_shipping' ),
 							'type' => 'text'
 						)
 				     );
@@ -120,7 +127,17 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 					
 					// Override base fee with tiered fee if cart items are over the tier quantity.
 					if ($cart_total_items > $this->settings['quantity']) {
-						$shipping = $this->settings['tierfee'];
+						
+						// If the tier fee should be progressive, calculate the multipler and add the tier fee * multiplier.
+						if ($this->settings['progressive'] == 'yes') {
+							$multiplier = ceil($cart_total_items / $this->settings['quantity']) - 1;
+							$shipping += $this->settings['tierfee'] * $multiplier;
+						} 
+						
+						// If the tier fee is flat, simply add the tier fee.
+						else {
+							$shipping += $this->settings['tierfee'];
+						}
 					}
 					
 					// Set the shipping rate.
@@ -136,12 +153,12 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		}
 	}
 
-	add_action( 'woocommerce_shipping_init', 'tiered_flat_rate_init' );
+	add_action( 'woocommerce_shipping_init', 'tiered_shipping_init' );
 
-	function add_tiered_flat_rate( $methods ) {
-		$methods[] = 'WC_Tiered_Flat_Rate';
+	function add_tiered_shipping( $methods ) {
+		$methods[] = 'WC_Tiered_Shipping';
 		return $methods;
 	}
 
-	add_filter( 'woocommerce_shipping_methods', 'add_tiered_flat_rate' );
+	add_filter( 'woocommerce_shipping_methods', 'add_tiered_shipping' );
 }
