@@ -6,7 +6,7 @@
 Plugin Name: WC Tiered Shipping
 Plugin URI: http://www.thatdevgirl.com/wc-tiered-shipping
 Description: Add a tiered flat rate shipping option for the WooCommerce plugin.
-Version: 2.0
+Version: 2.1
 Author: Joni Halabi
 Author URI: http://www.jhalabi.com
 License: The MIT License
@@ -92,10 +92,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 							'description' => __( 'Number of items in the cart to activate the additioal shipping fee for the next tier.', 'tiered_shipping' )
 						),
 						'progressive' => array(
-							'title' => __('Progressive fee?', 'tiered_shipping'),
+							'title' => __('Incremental fee?', 'tiered_shipping'),
 							'type' => 'checkbox',
-							'label' => 'Make the tiered shipping fee progressive',
-							'description' => __( 'If this option is checked the tiered shipping fee will be incremented progressively in multiples of the quantity; otherwise, the tiered shipping fee will be a flat fee if the cart is above the specified quantity.', 'tiered_shipping' )
+							'label' => 'Make the tiered shipping fee incremental',
+							'description' => __( 'If this option is checked, the tiered shipping fee will be applied incrementally in multiples of the tier item quantity; otherwise, the tiered shipping fee will be a flat fee if the cart is above the specified quantity.', 'tiered_shipping' )
 						),
 						'basefee' => array(
 							'title' => __( 'Base shipping fee ($)', 'tiered_shipping' ),

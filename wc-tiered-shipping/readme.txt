@@ -24,6 +24,9 @@ Step 3: Profit!
 
 == Changelog ==
 
+= 2.1 =
+* Updated the language around the progressive (incremental) fee option for clarity.
+
 = 2.0 =
 * Updated the package name.
 * Added the progressive fee feature, which gives users the option to apply the tiered shipping fee as either a flat or progressive fee.
