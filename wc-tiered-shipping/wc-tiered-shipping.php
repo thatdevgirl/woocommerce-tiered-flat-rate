@@ -5,8 +5,8 @@
 /*
 Plugin Name: WC Tiered Shipping
 Plugin URI: http://www.thatdevgirl.com/wc-tiered-shipping
-Description: Add a tiered flat rate shipping option for the WooCommerce plugin.
-Version: 2.1
+Description: This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
+Version: 2.2
 Author: Joni Halabi
 Author URI: http://www.jhalabi.com
 License: The MIT License
