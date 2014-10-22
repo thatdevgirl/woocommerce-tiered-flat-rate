@@ -25,6 +25,12 @@ Upload the plugin to your WordPress installation and activate it.
 
 == Changelog ==
 
+= 2.4.5 =
+* Actually fixing the plugin setting issue.
+
+= 2.4 =
+* Fixing issue where plugin settings are saved but not applied.  Please note that after changing your settings now, you may need to clear your current cache and/or user session.
+
 = 2.3 =
 * Updating readme file to include "tested up to" and other additional information.
 
