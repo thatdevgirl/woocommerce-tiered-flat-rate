@@ -28,7 +28,6 @@ Upload the plugin to your WordPress installation and activate it.
 == Screenshots ==
 
 1. Screenshot of "Tiered Shipping" setup as an enabled shipping method in WooCommerce Settings.  This can be found by going to WooCommerce > Settings > Shipping in the WP admin.
-
 2. Screenshot of the "Tiered Shipping" settings screen.
 
 == Changelog ==
