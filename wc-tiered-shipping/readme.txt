@@ -1,10 +1,13 @@
 === WC Tiered Shipping ===
 Contributors: thatdevgirl
 Tags: woocommerce, shipping
-License: The MIT License
-Author URI: http://www.jhalabi.com
+Author URI: http://www.thatdevgirl.com
 Plugin URI: http://www.thatdevgirl.com/wc-tiered-shipping/
-Tested up to: 4.0
+Requires at least: 3.0.1
+Tested up to: 4.3
+Stable tag: 4.3
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
 
@@ -23,7 +26,17 @@ specified tier quantity, or a progressive fee, meaning that the tier quantity is
 
 Upload the plugin to your WordPress installation and activate it.
 
+== Screenshots ==
+
+1. Screenshot of "Tiered Shipping" setup as an enabled shipping method in WooCommerce Settings.  This can be found by going to WooCommerce > Settings > Shipping in the WP admin.
+
+2. Screenshot of the "Tiered Shipping" settings screen.
+
 == Changelog ==
+
+= 2.4.6 =
+* Updating license and tested up to information in readme file.
+* Adding screenshots.
 
 = 2.4.5 =
 * Actually fixing the plugin setting issue.

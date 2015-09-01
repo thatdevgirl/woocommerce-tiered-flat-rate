@@ -2,6 +2,7 @@ WC Tiered Shipping
 =========================
 
 __Author:__ Joni Halabi (www.jhalabi.com)
+__License:__ GPLv2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
 
 Description
 -----------
