@@ -1,8 +1,7 @@
 === WC Tiered Shipping ===
 Contributors: thatdevgirl
 Tags: woocommerce, shipping
-Author URI: http://www.thatdevgirl.com
-Plugin URI: http://www.thatdevgirl.com/wc-tiered-shipping/
+Donate Link: https://www.paypal.me/thatdevgirl
 Requires at least: 3.0.1
 Tested up to: 4.3
 Stable tag: 2.5
@@ -13,13 +12,13 @@ This WordPress plugin adds a tiered flat rate shipping option for the WooCommerc
 
 == Description ==
 
-WordPress administrative users can create a tiered flat rate shipping fee based on the total number of items in a WooCommerce cart. 
+WordPress administrative users can create a tiered flat rate shipping fee based on the total number of items in a WooCommerce cart. The store administrator can choose to apply this shipping method to all available countries that the store may ship to, or only specific countries.
 
 There are two tiers in this shipping method:
 
-Base shipping fee: This is the base (default) flat shipping fee that is applied automatically to the cart total for any number of items.
+**Base shipping fee:** This is the base (default) flat shipping fee that is applied automatically to the cart total for any number of items.
 
-Additional shipping fee for tiers: This is the additional shipping fee that is added to the base fee if the number of items in the user's cart exceeds a specified number.  This tiered fee can either be a flat fee, meaning that it is applied to carts of any size above the specified tier quantity, or a progressive fee, meaning that the tier quantity is used as a multiplier to the tiered fee.
+**Additional shipping fee for tiers:** This is the additional shipping fee that is added to the base fee if the number of items in the user's cart exceeds a specified number.  This tiered fee can either be a flat fee, meaning that it is applied to carts of any size above the specified tier quantity, or a progressive fee, meaning that the tier quantity is used as a multiplier to the tiered fee.
 
 == Installation ==
 
@@ -32,9 +31,13 @@ Additional shipping fee for tiers: This is the additional shipping fee that is a
 == Screenshots ==
 
 1. Screenshot of "Tiered Shipping" setup as an enabled shipping method in WooCommerce Settings.  This can be found by going to WooCommerce > Settings > Shipping in the WP admin.
+
 2. Screenshot of the "Tiered Shipping" settings screen.
 
 == Changelog ==
+
+= 2.5.1 =
+* Updates to readme file documentation; adding donate link.
 
 = 2.5 =
 * [NEW FEATURE!] Adding new setting that allows admin to select if this shipping method is available in all countries or just selected ones.
