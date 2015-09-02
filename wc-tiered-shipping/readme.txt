@@ -5,7 +5,7 @@ Author URI: http://www.thatdevgirl.com
 Plugin URI: http://www.thatdevgirl.com/wc-tiered-shipping/
 Requires at least: 3.0.1
 Tested up to: 4.3
-Stable tag: 4.3
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,11 @@ Additional shipping fee for tiers: This is the additional shipping fee that is a
 
 == Installation ==
 
-Upload the plugin to your WordPress installation and activate it.
+1. Upload the plugin to your WordPress installation and activate the plugin.
+
+2. Go to the "Shipping" tab on the WooCommerce Settings page in the WP admin.
+
+3. Click on "Tiered Shipping" in the "Shipping Methods" table to enable this shipping methond and update its settings.
 
 == Screenshots ==
 
@@ -31,6 +35,11 @@ Upload the plugin to your WordPress installation and activate it.
 2. Screenshot of the "Tiered Shipping" settings screen.
 
 == Changelog ==
+
+= 2.5 =
+* [NEW FEATURE!] Adding new setting that allows admin to select if this shipping method is available in all countries or just selected ones.
+* [TWEAK] Resetting the stable tag (now that I have started using it) to make more sense.
+* [TWEAK] Fleshing out installation instructions in this readme file.
 
 = 2.4.6 =
 * Updating license and tested up to information in readme file.

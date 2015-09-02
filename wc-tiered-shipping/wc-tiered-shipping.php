@@ -6,7 +6,7 @@
 Plugin Name: WC Tiered Shipping
 Plugin URI: http://www.thatdevgirl.com/wc-tiered-shipping
 Description: This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
-Version: 2.4.6
+Version: 2.5
 Author: Joni Halabi
 Author URI: http://www.jhalabi.com
 License: GPLv2 or later
@@ -51,6 +51,8 @@ function tiered_shipping_init() {
 			 * Init Settings Form Fields (overriding default settings API)
 			 */
 			 function init_form_fields() {
+			 	global $woocommerce;
+
 				$this->form_fields = array(
 					'enabled' => array(
 						'title' => __( 'Enabled/Disabled', 'tiered_shipping' ),
@@ -65,6 +67,25 @@ function tiered_shipping_init() {
 						'default'     => __( 'Tiered Flat Rate', 'tiered_shipping' )
 					),
 					
+					'availability' => array(
+						'title'       => __( 'Availability', 'tiered_shipping' ),
+						'type'        => 'select',
+						'class'       => 'wc-enhanced-select availability',
+						'options'     => array(
+							'all'      => 'All allowed countries',
+							'specific' => 'Specific countries'
+						),
+						'default'     => __( 'all', 'tiered_shipping' )
+					),
+
+					'countries' => array(
+						'title'       => __( 'Countries', 'tiered_shipping' ),
+						'type'        => 'multiselect',
+						'class'       => 'wc-enhanced-select',
+						'options'     => $woocommerce->countries->countries,
+						'default'     => __( '', 'tiered_shipping' )
+					),
+
 					'quantity' => array(
 						'title'       => __( 'Number of items to activate tiered fee', 'tiered_shipping' ),
 						'type'        => 'text',
@@ -98,38 +119,79 @@ function tiered_shipping_init() {
 			 * @return void
 			 */
 			public function calculate_shipping( $package = array() ) {
-				global $woocommerce;
-				
-				// Get total item count from cart.
-				$cart_item_quantities = $woocommerce->cart->get_cart_item_quantities();
-				$cart_total_items = array_sum($cart_item_quantities); 
-				
-				// Set the base shipping fee.
-				$shipping = $this->get_option('basefee');
-				
-				// Override base fee with tiered fee if cart items are over the tier quantity.
-				if ($cart_total_items > $this->get_option('quantity')) {
+				// Only add the shipping rate for this method if the user's country is included.
+				if ($this->is_tiered_allowed($package)) { 
+					global $woocommerce;
+
+					// Get total item count from cart.
+					$cart_item_quantities = $woocommerce->cart->get_cart_item_quantities();
+					$cart_total_items = array_sum($cart_item_quantities); 
 					
-					// If the tier fee should be progressive, calculate the multiplier and add the tier fee * multiplier.
-					if ($this->get_option('progressive') == 'yes') {
-						$multiplier = ceil($cart_total_items / $this->get_option('quantity')) - 1;
-						$shipping += $this->get_option('tierfee') * $multiplier;
-					} 
+					// Set the base shipping fee.
+					$shipping = $this->get_option('basefee');
 					
-					// If the tier fee is flat, simply add the tier fee.
-					else {
-						$shipping += $this->get_option('tierfee');
+					// Override base fee with tiered fee if cart items are over the tier quantity.
+					if ($cart_total_items > $this->get_option('quantity')) {
+						
+						// If the tier fee should be progressive, calculate the multiplier and add the tier fee * multiplier.
+						if ($this->get_option('progressive') == 'yes') {
+							$multiplier = ceil($cart_total_items / $this->get_option('quantity')) - 1;
+							$shipping += $this->get_option('tierfee') * $multiplier;
+						} 
+						
+						// If the tier fee is flat, simply add the tier fee.
+						else {
+							$shipping += $this->get_option('tierfee');
+						}
+					}
+					
+					// Set the shipping rate.
+					$rate = array(
+						'id'    => $this->id,
+						'label' => $this->get_option('usertitle'),
+						'cost'  => $shipping
+					);
+					
+					$this->add_rate( $rate );
+				}
+			}
+
+			/**
+			 * is_tiered_allowed function.
+			 *
+			 * @param mixed $package
+			 * @return true|false
+			 */
+			function is_tiered_allowed( $package = array() ) {
+				// If plugin availability is set to all countries, just return true.
+				$availability = $this->get_option('availability');
+
+				if ($availability == 'all') {
+					return true;
+				}
+
+				// Otherwise, if user's country is not set, return false.
+				//    We cannot allow this shipping option if it is not available in all countries 
+				//    and we do not know what country the user is in.
+				$user_country = $package['destination']['country'];
+
+				if (!$user_country) {
+					return false;
+				}
+
+				// Otherwise, make sure the user's country is in the array of allowed countries.
+				$countries = $this->get_option('countries');
+
+				$in_allowed_country = false;
+				
+				for ($i=0; $i<sizeof($countries); $i++) {
+					if ($user_country == $countries[$i]) {
+						$in_allowed_country = true;
+						break;
 					}
 				}
-				
-				// Set the shipping rate.
-				$rate = array(
-					'id'    => $this->id,
-					'label' => $this->get_option('usertitle'),
-					'cost'  => $shipping
-				);
-				
-				$this->add_rate( $rate );
+
+				return $in_allowed_country;
 			}
 		}
 	}
