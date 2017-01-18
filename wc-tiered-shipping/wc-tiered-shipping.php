@@ -136,7 +136,7 @@ function tiered_shipping_init() {
 					}
 					
 					// Set the base shipping fee.
-					$shipping = $this->get_option('basefee');
+					$shipping = $cart_total_items > 0 ? $this->get_option('basefee') : 0;
 					
 					// Override base fee with tiered fee if cart items are over the tier quantity.
 					if ($cart_total_items > $this->get_option('quantity')) {
