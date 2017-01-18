@@ -123,9 +123,17 @@ function tiered_shipping_init() {
 				if ($this->is_tiered_allowed($package)) { 
 					global $woocommerce;
 
-					// Get total item count from cart.
-					$cart_item_quantities = $woocommerce->cart->get_cart_item_quantities();
-					$cart_total_items = array_sum($cart_item_quantities); 
+					// Get all items from cart.
+					$items = $woocommerce->cart->get_cart();
+					$cart_total_items = 0;
+
+					// Sum non-virtual (i.e. shippable) items
+					foreach ($items as $item) {
+						$product = wc_get_product($item['product_id']);
+						if (!$product->is_virtual()) {
+							$cart_total_items += $item['quantity'];
+						}
+					}
 					
 					// Set the base shipping fee.
 					$shipping = $this->get_option('basefee');
