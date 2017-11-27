@@ -6,17 +6,19 @@
      * Initialize JS for shipping method admin form functionality.
      */
     init: function() {
-      this.getFields();
-      this.toggleForm();
-      this.enabledCheck.click( () => { this.toggleForm(); } );
+      this.enabledCheck = $('#woocommerce_tiered_shipping_enabled');
+
+      if (this.enabledCheck.length) {
+        this.getFields();
+        this.toggleForm();
+        this.enabledCheck.click( () => { this.toggleForm(); } );
+      }
     },
 
     /**
      * Get form fields and save them to this object.
      */
     getFields: function() {
-      this.enabledCheck = $('#woocommerce_tiered_shipping_enabled');
-
       // Get availability field
       this.availabilityField = $('#woocommerce_tiered_shipping_availability').closest('tr');
 
