@@ -3,8 +3,8 @@ Contributors: thatdevgirl
 Tags: woocommerce, shipping, flat rate
 Donate Link: https://www.paypal.me/thatdevgirl
 Requires at least: 3.0.1
-Tested up to: 4.7.1
-Stable tag: 2.6
+Tested up to: 4.9
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,13 @@ There are two tiers in this shipping method:
 2. Screenshot of the "Tiered Shipping" settings screen.
 
 == Changelog ==
+
+= 3.0 =
+* Tested plugin on v4.9.
+* Updated code style to better adhere to WordPress code standards.
+* [NEW FEATURE!] Added functionality to toggle the settings form based on whether the shipping method is enabled.
+* [NEW FEATURE!] Plugin automatically deactivates if the WooCommerce plugin is deactivated.
+* [TWEAK] Updating ordering and language of the admin form.
 
 = 2.6 =
 * [FIX] No longer count virtual products when calculating shipping fee. (Thank you idpaterson!)
