@@ -2,11 +2,9 @@
 Contributors: thatdevgirl
 Tags: woocommerce, shipping, flat rate
 Donate Link: https://www.paypal.me/thatdevgirl
-Requires at least: 3.0.1
-Tested up to: 4.9
+Requires at least: 3.0
+Tested up to: 5.7
 Stable tag: 3.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
 
@@ -24,9 +22,11 @@ There are two tiers in this shipping method:
 
 1. Upload the plugin to your WordPress installation and activate the plugin.
 
-2. Go to the "Shipping" tab on the WooCommerce Settings page in the WP admin.
+2. In the WordPress admin, go to "WooCommerce" -> "Settings", then click on the Shipping tab.
 
-3. Click on "Tiered Shipping" in the "Shipping Methods" table to enable this shipping method and update its settings.
+3. At the top of the Shipping settings page, click on "Tiered Flat Rate Shipping".
+
+4. Enable this shipping option and enter your shipping settings.
 
 == Screenshots ==
 
@@ -35,6 +35,10 @@ There are two tiers in this shipping method:
 2. Screenshot of the "Tiered Shipping" settings screen.
 
 == Changelog ==
+
+= 3.1 =
+* Tested plugin on WP core 5.7.
+* [FIX] Make sure that WooCommerce is activated before activating this plugin. Or, if WooCommerce is deactivated and this plugin is still activated, auto-deactivate it, because this plugin does not work without WooCommerce.
 
 = 3.0 =
 * Tested plugin on v4.9.
