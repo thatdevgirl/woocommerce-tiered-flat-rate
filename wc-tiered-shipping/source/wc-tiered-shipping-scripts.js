@@ -1,6 +1,6 @@
-(function($) {
+( function( $ ) {
 
-  var tiered_shipping = {
+  const tieredShipping = {
 
     /**
      * Initialize JS for shipping method admin form functionality.
@@ -74,7 +74,7 @@
   }
 
   $(window).on('load', function() {
-    tiered_shipping.init();
+    tieredShipping.init();
   });
 
-})(jQuery);
+})( jQuery );

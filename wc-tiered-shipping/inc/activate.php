@@ -26,9 +26,9 @@ class Activate {
     // Check to see if WooCommerce is an active plugin.
     if ( in_array( 'woocommerce/woocommerce.php',  $active_plugins ) ) {
       // Require the rest of the files that we need for this plugin.
-      require_once( 'tiered-shipping-init.inc' );
-      require_once( 'tiered-shipping-add.inc' );
-      require_once( 'tiered-shipping-js.inc' );
+      require_once( 'init.php' );
+      require_once( 'add.php' );
+      require_once( 'set-assets.php' );
     } else {
       // Do not activate this plugin.
       deactivate_plugins( 'wc-tiered-shipping/wc-tiered-shipping.php' );

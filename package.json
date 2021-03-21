@@ -1,0 +1,25 @@
+{
+  "name": "wc_tiered_shipping",
+  "version": "1.0.0",
+  "description": "WC Tiered Shipping build scripts",
+  "main": "gulpfile.js",
+  "author": "Joni Halabi",
+  "devDependencies": {
+    "@babel/core": "7.5.*",
+    "@babel/preset-env": "7.5.*",
+    "babel-preset-minify": "0.5.*",
+    "babelify": "10.0.*",
+    "browserify": "16.2.*",
+    "gulp": "^4.0.2",
+    "gulp-babel": "7.0.*",
+    "gulp-clean-css": "latest",
+    "gulp-concat": "2.6.*",
+    "gulp-rename": "latest",
+    "gulp-uglify": "^3.0.2",
+    "vinyl-buffer": "1.0.*",
+    "vinyl-source-stream": "2.0.*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
