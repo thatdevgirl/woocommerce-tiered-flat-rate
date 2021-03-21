@@ -23,17 +23,25 @@ There are two tiers in this shipping method:
 
 1. Upload the plugin to your WordPress installation and activate the plugin.
 
-2. In the WordPress admin, go to "WooCommerce" -> "Settings", then click on the Shipping tab.
+2. In the WordPress admin, go to "WooCommerce" -> "Settings", then click on the "Shipping" tab.
 
-3. At the top of the Shipping settings page, click on "Tiered Flat Rate Shipping".
+3. At the top of the Shipping settings page, click on "Tiered flat rate shipping".
 
 4. Enable this shipping option and enter your shipping settings.
+
+== Frequently Asked Questions ==
+
+= I updated to 3.1 and the plugin is not working quite right. What's going on? =
+
+I have noticed some weirdness after making the necessary maintenance changes to make the plugin work with WordPress 5.*. Please go to the settings page for the shipping method and click "Save Changes". You do not need to actually change anything. Just re-saving the settings seems to clear things up.
+
+= What version of the plugin should I use if I am still on WordPress 4.*? =
+
+You probably want to stay on plugin version 3.0 in this case. However, I strongly recommend staying current with WordPress core and upgrading to 5.*.
 
 == Screenshots ==
 
 1. Screenshot of "Tiered Shipping" setup as an enabled shipping method in WooCommerce Settings.  This can be found by going to WooCommerce > Settings > Shipping in the WP admin.
-
-2. Screenshot of the "Tiered Shipping" settings screen.
 
 == Changelog ==
 
