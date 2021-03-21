@@ -2,39 +2,54 @@
 Contributors: thatdevgirl
 Tags: woocommerce, shipping, flat rate
 Donate Link: https://www.paypal.me/thatdevgirl
-Requires at least: 3.0.1
-Tested up to: 4.9
-Stable tag: 3.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Requires at least: 3.0
+Tested up to: 5.7
+Requires PHP: 7.0
+Stable tag: 3.1
 
 This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
 
 == Description ==
 
-WordPress administrative users can create a tiered flat rate shipping fee based on the total number of items in a WooCommerce cart. The store administrator can choose to apply this shipping method to all available countries that the store may ship to, or only specific countries.
+WordPress administrative users can create a tiered flat rate shipping fee based on the total number of items in a WooCommerce cart. The store administrator can choose to apply this shipping method to all allowed countries that the store may ship to or only specific countries.
 
 There are two tiers in this shipping method:
 
-**Base shipping fee:** This is the base (default) flat shipping fee that is applied automatically to the cart total for any number of items.
+* **Base shipping fee:** This is the base (default) flat shipping fee that is applied automatically to the cart total for any number of items.
 
-**Additional shipping fee for tiers:** This is the additional shipping fee that is added to the base fee if the number of items in the user's cart exceeds a specified number.  This tiered fee can either be a flat fee, meaning that it is applied to carts of any size above the specified tier quantity, or a progressive fee, meaning that the tier quantity is used as a multiplier to the tiered fee.
+* **Additional shipping fee for tiers:** This is the additional shipping fee that is added to the base fee if the number of items in the user's cart exceeds a specified number.  This tiered fee can either be a flat fee, meaning that it is applied to carts of any size above the specified tier quantity, or a progressive fee, meaning that the tier quantity is used as a multiplier to the tiered fee.
 
 == Installation ==
 
 1. Upload the plugin to your WordPress installation and activate the plugin.
 
-2. Go to the "Shipping" tab on the WooCommerce Settings page in the WP admin.
+2. In the WordPress admin, go to "WooCommerce" -> "Settings", then click on the "Shipping" tab.
 
-3. Click on "Tiered Shipping" in the "Shipping Methods" table to enable this shipping method and update its settings.
+3. At the top of the Shipping settings page, click on "Tiered flat rate shipping".
+
+4. Enable this shipping option and enter your shipping settings.
+
+== Frequently Asked Questions ==
+
+= I updated to 3.1 and the plugin is not working quite right. What's going on? =
+
+I have noticed some weirdness after making the necessary maintenance changes to make the plugin work with WordPress 5.*. Please go to the settings page for the shipping method and click "Save Changes". You do not need to actually change anything. Just re-saving the settings seems to clear things up.
+
+= What version of the plugin should I use if I am still on WordPress 4.*? =
+
+You probably want to stay on plugin version 3.0 in this case. However, I strongly recommend staying current with WordPress core and upgrading to 5.*.
 
 == Screenshots ==
 
 1. Screenshot of "Tiered Shipping" setup as an enabled shipping method in WooCommerce Settings.  This can be found by going to WooCommerce > Settings > Shipping in the WP admin.
 
-2. Screenshot of the "Tiered Shipping" settings screen.
-
 == Changelog ==
+
+= 3.1 =
+* Tested plugin on WP core 5.7.
+* [FIX] Make sure that WooCommerce is activated before activating this plugin. Or, if WooCommerce is deactivated and this plugin is still activated, auto-deactivate it, because this plugin does not work without WooCommerce.
+* [FIX] Actually add the shipping method to WooCommerce. Apparently this stopped working with some update to either WooCommerce or WordPress. Sorry, folks, that it's been a while since I've updated this plugin!
+* [ENHANCEMENT] Minified plugin admin Javascript for performance improvements.
 
 = 3.0 =
 * Tested plugin on v4.9.
