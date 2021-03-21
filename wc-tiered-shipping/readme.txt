@@ -4,19 +4,20 @@ Tags: woocommerce, shipping, flat rate
 Donate Link: https://www.paypal.me/thatdevgirl
 Requires at least: 3.0
 Tested up to: 5.7
-Stable tag: 3.0
+Requires PHP: 7.0
+Stable tag: 3.1
 
 This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
 
 == Description ==
 
-WordPress administrative users can create a tiered flat rate shipping fee based on the total number of items in a WooCommerce cart. The store administrator can choose to apply this shipping method to all available countries that the store may ship to, or only specific countries.
+WordPress administrative users can create a tiered flat rate shipping fee based on the total number of items in a WooCommerce cart. The store administrator can choose to apply this shipping method to all allowed countries that the store may ship to or only specific countries.
 
 There are two tiers in this shipping method:
 
-**Base shipping fee:** This is the base (default) flat shipping fee that is applied automatically to the cart total for any number of items.
+* **Base shipping fee:** This is the base (default) flat shipping fee that is applied automatically to the cart total for any number of items.
 
-**Additional shipping fee for tiers:** This is the additional shipping fee that is added to the base fee if the number of items in the user's cart exceeds a specified number.  This tiered fee can either be a flat fee, meaning that it is applied to carts of any size above the specified tier quantity, or a progressive fee, meaning that the tier quantity is used as a multiplier to the tiered fee.
+* **Additional shipping fee for tiers:** This is the additional shipping fee that is added to the base fee if the number of items in the user's cart exceeds a specified number.  This tiered fee can either be a flat fee, meaning that it is applied to carts of any size above the specified tier quantity, or a progressive fee, meaning that the tier quantity is used as a multiplier to the tiered fee.
 
 == Installation ==
 
@@ -39,6 +40,8 @@ There are two tiers in this shipping method:
 = 3.1 =
 * Tested plugin on WP core 5.7.
 * [FIX] Make sure that WooCommerce is activated before activating this plugin. Or, if WooCommerce is deactivated and this plugin is still activated, auto-deactivate it, because this plugin does not work without WooCommerce.
+* [FIX] Actually add the shipping method to WooCommerce. Apparently this stopped working with some update to either WooCommerce or WordPress. Sorry, folks, that it's been a while since I've updated this plugin!
+* [ENHANCEMENT] Minified plugin admin Javascript for performance improvements.
 
 = 3.0 =
 * Tested plugin on v4.9.

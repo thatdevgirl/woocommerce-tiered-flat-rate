@@ -118,50 +118,61 @@ function wp_tiered_shipping_init() {
      * @param array $package
      */
     public function calculate_shipping( $package = [] ) {
-      // Only add the shipping rate for this method if the user's country is included.
-      if ( $this->is_tiered_allowed( $package ) ) {
-        global $woocommerce;
+      // First, we need to do some checks to make sure that this shipping method
+      // is enabled and this users country is included / allowed. If one of these
+      // is not true, just return false.
+      // Is this shipping type enabled? If not, do nothing.
+      $enabled = $this->get_option( 'enabled' );
 
-        // Get all items from cart.
-        $items = $woocommerce->cart->get_cart();
-        $cart_total_items = 0;
+      if ( $enabled == 'no' ) { return false; }
+      if ( ! $this->is_tiered_allowed( $package ) ) { return false; }
 
-        // Sum non-virtual (i.e. shippable) items
-        foreach ( $items as $item ) {
-          $product = wc_get_product( $item['product_id'] );
-          if ( !$product->is_virtual() ) {
-            $cart_total_items += $item['quantity'];
-          }
+
+      // If we get to this point, we can add this shipping method to the front
+      // end and calculate the shipping rate!
+
+      global $woocommerce;
+
+      // Get all items from cart.
+      $items = $woocommerce->cart->get_cart();
+      $cart_total_items = 0;
+
+      // Sum non-virtual (i.e. shippable) items
+      foreach ( $items as $item ) {
+        $product = wc_get_product( $item['product_id'] );
+        if ( !$product->is_virtual() ) {
+          $cart_total_items += $item['quantity'];
         }
-
-        // Set the base shipping fee.
-        $shipping = $cart_total_items > 0 ? $this->get_option('basefee') : 0;
-
-        // Override base fee with tiered fee if cart items are over the tier quantity.
-        if ( $cart_total_items > $this->get_option( 'quantity' ) ) {
-
-          // If the tier fee should be progressive, calculate the multiplier and add the tier fee * multiplier.
-          if ( $this->get_option( 'progressive' ) == 'yes' ) {
-            $multiplier = ceil( $cart_total_items / $this->get_option( 'quantity' ) ) - 1;
-            $shipping += $this->get_option( 'tierfee' ) * $multiplier;
-          }
-
-          // If the tier fee is flat, simply add the tier fee.
-          else {
-            $shipping += $this->get_option( 'tierfee' );
-          }
-        }
-
-        // Set the shipping rate.
-        $rate = [
-          'id'    => self::ID,
-          'label' => $this->get_option( 'usertitle' ),
-          'cost'  => $shipping
-        ];
-
-        $this->add_rate( $rate );
       }
+
+      // Set the base shipping fee.
+      $shipping = $cart_total_items > 0 ? $this->get_option('basefee') : 0;
+
+      // Override base fee with tiered fee if cart items are over the tier quantity.
+      if ( $cart_total_items > $this->get_option( 'quantity' ) ) {
+
+        // If the tier fee should be progressive, calculate the multiplier and add the tier fee * multiplier.
+        if ( $this->get_option( 'progressive' ) == 'yes' ) {
+          $multiplier = ceil( $cart_total_items / $this->get_option( 'quantity' ) ) - 1;
+          $shipping += $this->get_option( 'tierfee' ) * $multiplier;
+        }
+
+        // If the tier fee is flat, simply add the tier fee.
+        else {
+          $shipping += $this->get_option( 'tierfee' );
+        }
+      }
+
+      // Set the shipping rate.
+      $rate = [
+        'label'    => $this->title,
+        'cost'     => $shipping,
+        'calc_tax' => 'per_item'
+      ];
+
+      $this->add_rate( $rate );
     }
+
 
     /**
      * is_tiered_allowed()

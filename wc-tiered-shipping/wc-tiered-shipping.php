@@ -15,11 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once( 'inc/activate.php' );
-
-// if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-//   require_once( 'inc/tiered-shipping-init.inc' );
-//   require_once( 'inc/tiered-shipping-add.inc' );
-//   require_once( 'inc/tiered-shipping-js.inc' );
-// } else {
-//   deactivate_plugins( plugin_basename( __FILE__ ) );
-// }
+require_once( 'inc/init.php' );
+require_once( 'inc/add.php' );
+require_once( 'inc/set-assets.php' );
