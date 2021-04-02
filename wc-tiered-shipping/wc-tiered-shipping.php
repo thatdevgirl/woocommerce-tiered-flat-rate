@@ -3,7 +3,7 @@
 /*
  * Plugin Name: WooCommerce Tiered Shipping
  * Description: This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
- * Version: 3.1
+ * Version: 3.1.1
  * Author: Joni Halabi
  * Author URI: https://jhalabi.com
  * License: GPL2
