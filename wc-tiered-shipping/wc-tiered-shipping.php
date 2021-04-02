@@ -17,4 +17,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once( 'inc/activate.php' );
 require_once( 'inc/init.php' );
 require_once( 'inc/add.php' );
+require_once( 'inc/plugins-page.php' );
 require_once( 'inc/set-assets.php' );
