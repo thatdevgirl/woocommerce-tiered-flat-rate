@@ -3,9 +3,9 @@ Contributors: thatdevgirl
 Tags: woocommerce, shipping, flat rate
 Donate Link: https://www.buymeacoffee.com/thatdevgirl
 Requires at least: 3.0
-Tested up to: 5.9
+Tested up to: 6.0
 Requires PHP: 7.0
-Stable tag: 3.1
+Stable tag: 3.1.1
 
 This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
 
