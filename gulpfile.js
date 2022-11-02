@@ -6,10 +6,8 @@
 const gulp       = require( 'gulp' ),
       browserify = require( 'browserify' ),
       buffer     = require( 'vinyl-buffer' ),
-      concat     = require( 'gulp-concat' ),
       source     = require( 'vinyl-source-stream' ),
       uglify     = require( 'gulp-uglify' );
-
 
 // Build editor JS files.
 function jsTask() {
