@@ -7,7 +7,7 @@
  * Requires Plugins: woocommerce
  * Author: Joni Halabi
  * Author URI: https://jhalabi.com
- * License: GPL2
+ * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 

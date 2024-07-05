@@ -3,7 +3,7 @@ Contributors: thatdevgirl
 Tags: woocommerce, shipping, flat rate
 Donate Link: https://www.buymeacoffee.com/thatdevgirl
 Requires at least: 3.0
-Tested up to: 6.5
+Tested up to: 6.6
 Requires PHP: 7.0
 Stable tag: 3.2.0
 
