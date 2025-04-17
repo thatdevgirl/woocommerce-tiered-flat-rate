@@ -7,9 +7,17 @@ Tested up to: 6.7
 Requires PHP: 7.0
 Stable tag: 3.2.0
 
-This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
+[Deprecated!] This WordPress plugin adds a tiered flat rate shipping option for the WooCommerce plugin.
 
 == Description ==
+
+**Important notice!**
+
+Due to a shift in my personal and professional priorities, I have decided to take a step back from development. As a result, this plugin is no longer being actively maintained. You are welcome to [fork it](https://github.com/thatdevgirl/woocommerce-tiered-flat-rate) and create your own updates. If you do so, please credit me as the original author. (I would also love to hear about this plugin’s new life!) 
+
+All the best, Joni. 
+
+--
 
 WordPress administrative users can create a tiered flat rate shipping fee based on the total number of items in a WooCommerce cart. The store administrator can choose to apply this shipping method to all allowed countries that the store may ship to or only specific countries.
 
